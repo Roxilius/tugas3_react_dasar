@@ -3,6 +3,7 @@ import { useState } from "react";
 import TasksButton from "../components/TasksButton";
 import { Plus } from "lucide-react";
 import Button from "../components/Button";
+import { useEffect } from "react";
 
 const initialTasks = [
   {
@@ -69,6 +70,9 @@ export default function Home() {
   function handleEdit(task) {
     setEditTask(task);
   }
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  });
   return (
     <main className="flex flex-col h-screen p-5 gap-2">
       <h1 className="text-4xl text-center">My Tasks</h1>
